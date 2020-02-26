@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Load properties file: sport.properties -->
+    <context:property-placeholder location="classpath:Minecraft.properties"/>
+
+    <!-- Define your beans here -->
+    <bean id="myConsoleAvalibility" class="spring.services.ConsoleAvalibility">
+    </bean>
+
+    <bean id="myGame" class="spring.beans.PCGame">
+        <!-- Setter injection -->
+        <property name="console" ref="myConsoleAvalibility"/>
+
+        <!-- Inject literal values from properties file -->
+        <property name="name" value="${c1.name}"/>
+        <property name="price" value="${c1.price}"/>
+        <property name="genre" value="${c1.genre}"/>
+        <property name="description" value="${c1.description}"/>
+    </bean>
+
+
+</beans>
